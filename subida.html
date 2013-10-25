@@ -133,9 +133,9 @@
 		<h2>Rellene los siguientes campos para subir una interacción al repositorio: </h2>
 		<form action='php/subirArchivo.php' method='post' class='ingresoPregunta' id='ingresoPregunta' enctype='multipart/form-data'>
 			<h3>Ingreso Metadatos </h3>
-			<label><div>Autor: </div></label> <input type='text' name='autor' id='autor' autofocus required>* <br>
-			<label><div>Institución: </div></label> <input type='text' name='institucion' id='institucion'> <br>
-			<label><div>Nombre Pregunta: </div></label> <input type='text' name='nombre' id='nombre' required>*<br>
+			<label><div>Autor: </div></label> <input type='text' maxlength='40' name='autor' id='autor' autofocus required>* <br>
+			<label><div>Institución: </div></label> <input type='text' name='institucion' maxlength='40' id='institucion'> <br>
+			<label><div>Nombre Pregunta: </div></label> <input type='text' maxlength='40' name='nombre' id='nombre' required>*<br>
 			<label> <div> Nivel de Educación: </div></label>
 			<select name='nivel' id='nivel' required>
 				<option value='' selected>Seleccione una Opción</option>
@@ -153,8 +153,8 @@
 				<option value=''>Seleccione una Opción</option>
 			</select><br>
 			<label> <div> Concepto: </div></label><input type='text' name='concepto' id='concepto' required>*<br>
-			<label> <div> Herramienta de Autor: </div></label><input type='text' name='herramienta_autor' id='herramienta_autor' ><br>
-			<label> <div> Palabras Claves: </div></label><input type='text' name='tags' value='Ej. casa, puerta' id='tags'> <br>
+			<label> <div> Herramienta de Autor: </div></label><input type='text' maxlength='40' name='herramienta_autor' id='herramienta_autor' ><br>
+			<label> <div> Palabras Claves: </div></label><input type='text' name='tags' maxlength='400' id='tags'>(Ej. casa, puerta) <br>
 			<label> <div> Cargue el archivo: </div></label><input id='archivo' type='file' accept='text/xml,application/zip' name='archivo' required><br>
 			<input type='button' id='subir' value='Subir'>
 			<input type='button' id='atras' value='Atrás'>
