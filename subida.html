@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Repositorio QTI</title>
+	<meta charset="UTF-8">
+	<link rel = "StyleSheet" href="css/estilos.css" type="text/css">
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#nivel').change(function() {
+				if ($('#nivel').val()=='' || $('#nivel').val()=='superior') {
+					$('#materia').attr('disabled', true);
+					$('#curso').attr('disabled', true);
+				}
+
+				else if ($('#nivel').val()=='basico') {
+					$('#materia').empty();
+					$('#materia').append('<option value= "">Selecione una Opción</option>'+
+						'<option value="historia">Historia, Geografía y Ciencias Sociales</option>'+
+						'<option value="lenguaje">Lenguaje y Comunicación</option>'+
+						'<option value="matemática">Matemática</option>'+
+						'<option value="ciencias">Ciencias Naturales</option>'+
+						'<option value="ingles">Inglés</option>'+
+						'<option value="musica">Música</option>'+
+						'<option value="ed.fisica">Educación Física y Salud</option>'+
+						'<option value="orientacion">Orientación</option>'+
+						'<option value="tecnología">Tecnología</option>'+
+
+						'<option value="artes">Artes Visuales</option>');
+					$('#materia').attr('disabled', false);
+					$('#curso').attr('disabled', false);
+					$('#curso').empty();
+					$('#curso').append('<option value="">Seleccione una Opción</option>'+
+						'<option value="1">1° básico</option>'+
+						'<option value="2">2° básico</option>'+
+						'<option value="3">3° básico</option>'+
+						'<option value="4">4° básico</option>'+
+						'<option value="5">5° básico</option>'+
+						'<option value="6">6° básico</option>'+
+						'<option value="7">7° básico</option>'+
+						'<option value="8">8° básico</option>');
+				}
+
+				else if($('#nivel').val()=='medio'){
+					$('#materia').empty();
+					$('#materia').append('<option value= "">Selecione una Opción</option>'+
+						'<option value="historia">Historia, Geografía y Ciencias Sociales</option>'+
+						'<option value="lenguaje">Lenguaje y Comunicación</option>'+
+						'<option value="matemática">Matemática</option>'+
+						'<option value="biología">Biología</option>'+
+						'<option value="quimica">Química</option>'+
+						'<option value="fisica">Física</option>'+
+						'<option value="tecnologica">Educación Tecnológica</option>'+
+						'<option value="ed.fisica">Educación Física</option>'+
+						'<option value="orientacion">Orientación</option>'+
+						'<option value="musica">Música</option>'+
+						'<option value="filosofia">Filosofía</option>'+
+						'<option value="artes">Artes Visuales</option>');
+
+	
+
+					$('#materia').attr('disabled', false);
+					$('#curso').attr('disabled', false);
+					$('#curso').empty();
+					$('#curso').append('<option value = "" >Seleccione una opción</option>'+
+						'<option value="1">1° medio</option>'+
+						'<option value="2">2° medio</option>'+
+						'<option value="3">3° medio</option>'+
+						'<option value="4">4° medio</option>');
+
+				}
+
+
+			});
+
+
+			$('#atras').click(function() {
+				document.location.href='index.html'
+			});
+			
+			$('#subir').click(function() {
+				var c=0;
+				if ($('#autor').val()=='') {
+					alert('Debe ingresar el autor');
+					c=c+1;
+				}
+				if ($('#nombre').val()=='') {
+					alert('Debe Ingresar el nombre de la pregunta');
+					c=c+1;
+				}
+				if ($('#nivel').val()=='') {
+					alert('Debe ingresar el nivel educacional');
+					c=c+1;
+				}
+				else if ($('#nivel').val() == 'basico' || $('#nivel').val() =='medio' ) {
+					if ($('#materia').val()=='') {
+						alert('Debe ingresar la materia');	
+						c=c+1;
+					}
+					
+					if ($('#curso').val()=='') {
+						alert('debe ingresar un curso');
+						c=c+1;
+					}
+					
+				}
+				if ($('#concepto').val()=='') {
+					alert('Debe ingresar un concepto');
+					c=c+1;
+				}
+				if ($('#archivo').val()=='') {
+					alert('Debe seleccionar un archivo');
+				}
+				if ($('#archivo').val().lastIndexOf('.zip') != ($('#archivo').val().length-4) && $('#archivo').val().lastIndexOf('.xml') != ($('#archivo').val().length-4))  {
+					alert('Su archivo debe ser .xml o .zip');
+					c=c+1;
+
+				}
+				if (c==0) {
+					$('#ingresoPregunta').submit();
+				}
+
+			});
+		});
+	</script>
+</head>
+<body onload='getHeader()'>
+	<div class='cuerpo'>
+	<header>
+	</header>
+	<div class='contenido'>
+		<h2>Rellene los siguientes campos para subir una interacción al repositorio: </h2>
+		<form action='php/subirArchivo.php' method='post' class='ingresoPregunta' id='ingresoPregunta' enctype='multipart/form-data'>
+			<h3>Ingreso Metadatos </h3>
+			<label><div>Autor: </div></label> <input type='text' name='autor' id='autor' autofocus required>* <br>
+			<label><div>Institución: </div></label> <input type='text' name='institucion' id='institucion'> <br>
+			<label><div>Nombre Pregunta: </div></label> <input type='text' name='nombre' id='nombre' required>*<br>
+			<label> <div> Nivel de Educación: </div></label>
+			<select name='nivel' id='nivel' required>
+				<option value='' selected>Seleccione una Opción</option>
+				<option value='basico'>Enseñanza Básica</option>
+				<option value='medio'>Enseñanza Media</option>
+				<option value='superior'>Enseñanza Superior</option>
+			</select>*<br>
+			<label name='materia' disabled> <div> Materia: </div></label>
+			<select name='materia' id='materia' disabled>
+				<option value='' selected>Seleccione una Opción</option>
+				<option value='historia'>Historia</option>
+			</select> <br>
+			<label name='curso' disabled> <div> Curso: </div></label>
+			<select name ='curso' id='curso' disabled>
+				<option value=''>Seleccione una Opción</option>
+			</select><br>
+			<label> <div> Concepto: </div></label><input type='text' name='concepto' id='concepto' required>*<br>
+			<label> <div> Herramienta de Autor: </div></label><input type='text' name='herramienta_autor' id='herramienta_autor' ><br>
+			<label> <div> Palabras Claves: </div></label><input type='text' name='tags' value='Ej. casa, puerta' id='tags'> <br>
+			<label> <div> Cargue el archivo: </div></label><input id='archivo' type='file' accept='text/xml,application/zip' name='archivo' required><br>
+			<input type='button' id='subir' value='Subir'>
+			<input type='button' id='atras' value='Atrás'>
+		</form>
+	</div>
+	<footer>
+	</footer>
+	</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+/*reset*/
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, pre, code, address, variable, form, fieldset, blockquote {
+ padding: 0;
+ margin: 0;
+ font-size: 100%;
+ font-weight: normal;
+ font-family: 'Arial';
+}
+table { border-collapse: collapse; border-spacing: 0; font-family: 'Arial';}
+td, th, caption { font-weight: normal; text-align: left;font-family: 'Arial'; }
+img, fieldset { border: 0; font-family: 'Arial';}
+ol { padding-left: 1.4em; list-style: decimal;font-family: 'Arial'; }
+ul { padding-left: 1.4em; list-style:square;font-family: 'Arial'; }
+q:before, q:after { content:''; }
+
+/*cuerpo*/
+.cuerpo{width:1000px;margin: 0 auto; display: table;}
+
+header{padding-top: 20px; width: 200px; margin: 50px auto 70px; display: block;}
+footer{width: 200px; margin: 70px auto 50px; margin-top:200px; display: block;}
+
+/*pagina index*/
+
+.contenido a{text-decoration: none;}
+.contenido a:visited{color: black;}
+.contenido a:hover{color: green;}
+
+.left{width:499px;display: inline-block; position: relative;margin-top: 100px;}
+.left img{margin-left: 165px;}
+.left p{margin-left: 192px;}
+
+.right{width:499px;display: inline;}
+.right img{position:absolute; margin-left: 137px; width: 238px; margin-top: 105px;} 
+.right p{margin-left: 712px; margin-top: -20px;}
+
+/*pagina ingreso*/
+.contenido h2{margin-bottom: 60px;}
+.contenido form{width: 740px; margin: 0 auto}
+.contenido form h3 {margin-bottom: 40px;}
+.contenido form label, .contenido form select, .contenido form label, .contenido form input{margin-bottom: 10px;} 
+.contenido label div {width: 180px; display: inline-block;}
+.contenido form input[type="button"]{width: 150px; margin-top: 20px;margin-right: 40px;}
+.contenido form input[type="text"]{width: 300px;}
+.contenido form select {width:307px;}
+
+/*pagina de búsqueda*/
+.contenido .busqueda h3 {margin-top: 60px;}
+
+.resultados{position: relative; width: 740px; margin: 0 auto; margin-top: 40px;}
+.resultados h3{margin-bottom: 80px;}
+.pregunta{margin-bottom: 20px; position: relative;}
+.pregunta .separador{background-color: orange; width: 600px; height: 4px; display: block; margin-bottom: 40px; margin-top: 40px;}
+
+.resultados div{display: inline; width: 180px;}
+
+.contenido .resultados .descarga{position: absolute; left: 464px; top:45px;}
+.descarga div{margin-left: 40px;}
+.descarga img {width: 154px;}
+
+/*navegacion*/
+.nav-down{position: absolute; margin-top: 90px;}
+.nav-down .left-arrow{position: absolute; top:0px; left: 50px; text-decoration: none; font-size: 14px; color: #666666;}
+.nav-down .left-arrow img{position: absolute; top:-12px; left: -40px;}
+.nav-down .right-arrow{position: absolute; top:0px; left: 540px;text-decoration: none; font-size: 14px; color: #666666;}
+.nav-down .right-arrow img{position: absolute; top:-12px; left: 70px;}
+.nav-down .info{position: relative; left: 250px; font-size: 14px; color: #666666; width: 160px;}
+
+/*.nav-down .left-arrow:hover{position: absolute; top:0px; left: 50px; text-decoration: none; font-size: 14px; color: #666666;}*/
+.nav-down .left-arrow img{position: absolute; top:-12px; left: -40px;}
+.nav-down .right-arrow{position: absolute; top:0px; left: 540px;text-decoration: none; font-size: 14px; color: #666666;}
+.nav-down .right-arrow img{position: absolute; top:-12px; left: 70px;}

@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Repositorio QTI</title>
+	<meta charset="UTF-8">
+	<link rel = "StyleSheet" href="css/estilos.css" type="text/css">
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#nivel').change(function() {
+				if ($('#nivel').val()=='' || $('#nivel').val()=='superior') {
+					$('#materia').attr('disabled', true);
+					$('#curso').attr('disabled', true);
+				}
+
+				else if ($('#nivel').val()=='basico') {
+					$('#materia').empty();
+					$('#materia').append('<option value= "">Selecione una Opción</option>'+
+						'<option value="historia">Historia, Geografía y Ciencias Sociales</option>'+
+						'<option value="lenguaje">Lenguaje y Comunicación</option>'+
+						'<option value="matemática">Matemática</option>'+
+						'<option value="ciencias">Ciencias Naturales</option>'+
+						'<option value="ingles">Inglés</option>'+
+						'<option value="musica">Música</option>'+
+						'<option value="ed.fisica">Educación Física y Salud</option>'+
+						'<option value="orientacion">Orientación</option>'+
+						'<option value="tecnología">Tecnología</option>'+
+
+						'<option value="artes">Artes Visuales</option>');
+					$('#materia').attr('disabled', false);
+					$('#curso').attr('disabled', false);
+					$('#curso').empty();
+					$('#curso').append('<option value="">Seleccione una Opción</option>'+
+						'<option value="historia">Historia, Geografía y Ciencias Sociales</option>'+
+						'<option value="lenguaje">Lenguaje y Comunicación</option>'+
+						'<option value="matemática">Matemática</option>'+
+						'<option value="biología">Biología</option>'+
+						'<option value="quimica">Química</option>'+
+						'<option value="fisica">Física</option>'+
+						'<option value="tecnologica">Educación Tecnológica</option>'+
+						'<option value="ed.fisica">Educación Física</option>'+
+						'<option value="orientacion">Orientación</option>'+
+						'<option value="musica">Música</option>'+
+						'<option value="filosofia">Filosofía</option>'+
+						'<option value="artes">Artes Visuales</option>');
+				}
+
+				else if($('#nivel').val()=='medio'){
+					$('#materia').empty();
+					$('#materia').append('<option value= "">Selecione una Opción</option>'+
+						'<option value="historia">Historia</option>'+
+						'<option value="lenguaje">Lenguaje y Comunicación</option>');
+					$('#materia').attr('disabled', false);
+					$('#curso').attr('disabled', false);
+					$('#curso').empty();
+					$('#curso').append('<option value = "" >Seleccione una opción</option>'+
+						'<option value="1">1° medio</option>'+
+						'<option value="2">2° medio</option>'+
+						'<option value="3">3° medio</option>'+
+						'<option value="4">4° medio</option>');
+
+				}
+
+
+			});
+
+			$('#atras').click(function() {
+				document.location.href='index.html'
+			});	
+
+			$('#buscar').click(function() {
+				var c=0;
+				
+				
+				if ($('#nivel').val()=='') {
+					alert('Debe ingresar el nivel educacional');
+					c=c+1;
+				}
+				if ($('#concepto').val()=='') {
+					alert('Debe ingresar un concepto');
+					c=c+1;
+				}
+				
+				if (c==0) {
+					var concepto= $('#concepto').val();
+					var nivel= $('#nivel').val();
+					var curso= $('#curso').val();
+					var materia= $('#materia').val();
+					$.get('php/busqueda.php',{concepto:concepto,nivel:nivel,curso:curso,materia:materia,pagina:1}, function(data) {
+						$('.resultados').html(data);
+						$('.busqueda').attr('hidden', 'hidden');
+						$('.resultados').attr('hidden', false);
+					});
+				}
+
+			});
+
+			$('.descarga').live('click', function(event){
+				var ruta= $(this).attr('ruta');
+				var nombre= $(this).attr('nombre');
+				document.location.href='php/descarga.php?ruta='+ruta+'&nombre='+nombre;
+			});
+
+			$('#siguiente').live("click",function(){
+				if ($('#selector option:selected').text() != $('#siguiente').attr("num")) {
+					var pagina=parseFloat($('#selector').val())+1;
+					var concepto= $('#concepto').val();
+					var nivel= $('#nivel').val();
+					var curso= $('#curso').val();
+					var materia= $('#materia').val();
+					$.get("php/busqueda.php", {concepto:concepto,nivel:nivel,curso:curso,materia:materia,pagina:pagina},function(data){
+						$('.resultados').html(data);
+						$('.resultados').attr('hidden', false);
+					});
+				};
+		
+	});
+	
+			$('#anterior').live("click",function(){
+				if ($('#selector option:selected').text() != '1') {
+					var pagina=$('#selector option:selected').val()-1;
+					var concepto= $('#concepto').val();
+					var nivel= $('#nivel').val();
+					var curso= $('#curso').val();
+					var materia= $('#materia').val();
+					$.get("php/busqueda.php", {concepto:concepto,nivel:nivel,curso:curso,materia:materia,pagina:pagina},function(data){
+						$('.resultados').html(data);
+					});
+				};
+			});
+
+			$('#selector').live("change",function() {
+				pagina_busqueda();
+			});
+
+			function pagina_busqueda(){
+				var pagina=$('#selector option:selected').text();
+				var concepto= $('#concepto').val();
+				var nivel= $('#nivel').val();
+				var curso= $('#curso').val();
+				var materia= $('#materia').val();
+				$.get("php/busqueda.php", {concepto:concepto,nivel:nivel,curso:curso,materia:materia,pagina:pagina},function(data){
+					$('.resultados').html(data);
+				});
+				$(location).attr('href','#');
+			}
+		});
+	</script>
+</head>
+<body onload='getHeader()'>
+	<div class='cuerpo'>
+	<header>
+	</header>
+	<div class='contenido'>
+		<p>Bienevenido al repositorio web para interacciones bajo el estándar QTI</p>
+		<form class= 'busqueda'>
+			<h3>Búsqueda</h3>
+			<label><div>Concepto:</div> </label> <input type='text' id= 'concepto' name='concepto' autofocus> *<br>
+			<label><div>Nivel de Educación:</div> </label>
+			<select name='nivel' id = 'nivel' required>
+				<option value='' selected>Seleccione una Opción</option>
+				<option value='basico'>Enseñanza Básica</option>
+				<option value='medio'>Enseñanza Media</option>
+				<option value='superior'>Enseñanza Superior</option>
+			</select> *<br>
+			<label><div>Materia:</div> </label>
+			<select name='materia' id='materia' disabled>
+				<option value='' selected>Seleccione una Opción</option>
+				<option value='historia'>Historia</option>
+			</select> <br>
+			<label><div>Curso:</div> </label>
+			<select name ='curso' id='curso' disabled>
+				<option value=''>Seleccione una Opción</option>
+			</select><br>
+			<input type='button' id='buscar' value='Buscar'>
+			<input type='button' id='atras' value='Atrás'>
+		</form>
+		<div class='resultados' hidden>
+			
+		</div>
+	</div>
+	<footer>
+	</footer>
+	</div>
+</body>
+</html>
