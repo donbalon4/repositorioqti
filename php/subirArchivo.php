@@ -99,8 +99,7 @@ if (isset ($_FILES["archivo"]) and $ingreso) {
       $fecha=date('Y-m-d');
       
       /*ingreso a la base de datos*/
-      $c=0;
-      while($c<44){
+
       mysqli_query($conexion,"INSERT INTO `pregunta`( `nombre`, `autor`, `institucion`,
        `herramienta_autor`, `compatible_mobile`, `nivel_educacion`, `materia`, `curso`, `concepto`,
         `ruta_descarga`, `tamano`, `fecha_ingreso`)
@@ -108,8 +107,8 @@ if (isset ($_FILES["archivo"]) and $ingreso) {
         '$herramienta_autor','$compatible_Mobile','$nivel','$materia','$curso','$concepto',
         '$ingresar_Bd[ruta]','$tamano','$fecha')") or die("Problemas al ingresar 
         en la base de datos".mysqli_error($conexion));
-        $c=$c+1;
-        }
+  
+  
 
         if ($tags != '') {
           $tags=explode(',', $tags);
