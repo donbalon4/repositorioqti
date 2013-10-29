@@ -53,7 +53,7 @@ footer{width: 200px; margin: 70px auto 50px; margin-top:200px; display: block;}
 
 .resultados div{display: inline; width: 180px;}
 
-.contenido .resultados .descarga{position: absolute; left: 464px; top:45px;}
+.contenido .resultados .descarga{display: block; margin-left: 380px;margin-top: -190px;}
 .descarga div{margin-left: 40px;}
 .descarga img {width: 154px;}
 

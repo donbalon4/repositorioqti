@@ -1,4 +1,7 @@
 <?php
+/*
+Autor: Daniel Ojeda Sandoval
+*/
 function validarXML($pregunta,$ruta='noruta')
 {
     $compatible_Mobile=False;

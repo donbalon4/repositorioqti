@@ -1,4 +1,7 @@
 <?php
+/*
+Autor: Daniel Ojeda Sandoval
+*/
 $conexion=mysqli_connect("localhost","root","root") 
   or  die("Problemas en la conexion");
 

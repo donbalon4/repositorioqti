@@ -1,17 +1,28 @@
 <?php
+/*
+Autor: Daniel Ojeda Sandoval
+*/
 include_once 'conexion.php';
 include_once 'funciones.php';
 
 $autor=mysql_real_escape_string($_REQUEST['autor']);
+$autor=strip_tags($autor);
 $institucion=mysql_real_escape_string($_REQUEST['institucion']);
+$institucion=strip_tags($institucion);
 $nombre=mysql_real_escape_string($_REQUEST['nombre']);
+$nombre=strip_tags($nombre);
 $nivel=mysql_real_escape_string($_REQUEST['nivel']);
+$nivel=strip_tags($nivel);
 $materia=mysql_real_escape_string($_REQUEST['materia']);
+$materia=strip_tags($materia);
 $curso=mysql_real_escape_string($_REQUEST['curso']);
+$curso=strip_tags($curso);
 $concepto=mysql_real_escape_string($_REQUEST['concepto']);
-$herramienta_autor='';
+$concepto=strip_tags($concepto);
 $herramienta_autor=mysql_real_escape_string($_REQUEST['herramienta_autor']);
+$herramienta_autor=strip_tags($herramienta_autor);
 $tags=mysql_real_escape_string($_REQUEST['tags']);
+$tags=strip_tags($tags);
 $tags=strtolower($tags);
 //Validaciones
 $ingreso=true;

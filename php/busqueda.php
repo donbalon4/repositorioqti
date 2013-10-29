@@ -1,11 +1,19 @@
 <?php 
+/*
+Autor: Daniel Ojeda Sandoval
+*/
 include_once "conexion.php";
 
 $concepto = mysqli_real_escape_string($conexion,$_REQUEST['concepto']);
+$concepto=strip_tags($concepto);
 $nivel = mysqli_real_escape_string($conexion,$_REQUEST['nivel']);
+$nivel=strip_tags($nivel);
 $materia = mysqli_real_escape_string($conexion,$_REQUEST['materia']);
+$materia=strip_tags($materia);
 $curso = mysqli_real_escape_string($conexion,$_REQUEST['curso']);
+$curso=strip_tags($curso);
 $pagina=mysqli_real_escape_string($conexion,$_REQUEST['pagina']);
+$pagina=strip_tags($pagina);
 $busqueda=true;
 if ($nivel == '') {
   $busqueda=false;
