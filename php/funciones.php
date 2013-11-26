@@ -64,6 +64,12 @@ function validarXML($pregunta,$ruta='noruta')
 }
 
 function copiarArchivo($nivel,$nombreTemporal,$nombre,$materia,$curso,$concepto){
+  $nivel=str_replace(' ','_',$nivel);
+  $nombreTemporal=str_replace(' ','_',$nombreTemporal);
+  $nombre=str_replace(' ','_',$nombre);
+  $materia=str_replace(' ','_',$materia);
+  $curso=str_replace(' ','_',$curso);
+  $concepto=str_replace(' ','_',$concepto);
   $respuesta['exito']=false;
 	if ($nivel == 'basico' or $nivel == 'medio') {
         $ruta="../preguntas/$nivel/$materia/$curso/$concepto";
@@ -138,6 +144,12 @@ function validarZip($nombreTemporal){
 }
 
 function copiarArchivoZip($nivel,$nombreTemporal,$nombre,$materia,$curso,$concepto){
+  $nivel=str_replace(' ','_',$nivel);
+  $nombreTemporal=str_replace(' ','_',$nombreTemporal);
+  $nombre=str_replace(' ','_',$nombre);
+  $materia=str_replace(' ','_',$materia);
+  $curso=str_replace(' ','_',$curso);
+  $concepto=str_replace(' ','_',$concepto);
   $respuesta['exito']=false;
   if ($nivel == 'basico' or $nivel == 'medio') {
         $ruta="../preguntas/$nivel/$materia/$curso/$concepto";

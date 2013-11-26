@@ -1,5 +1,5 @@
 function getHeader(){
-	$('header').append("<h1>REPOSITORIO WEB QTI</h1>");
+	$('header').append("<h1>Repositorio Web QTI</h1>");
     getFooter();
 }
 
