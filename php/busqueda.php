@@ -124,7 +124,7 @@ if ($busqueda) {
 					$fecha=$preguntas2[$i]['fecha'];
 
 					$respuesta=$respuesta."<div class='pregunta'>
-						<h4>Concepto: $concepto</h4>
+						<h4><span>Concepto: </span>$concepto</h4>
 						<p>
 							<div>Nombre:</div> $nombre<br>
 							<div>Autor:</div> $autor<br>
@@ -171,7 +171,7 @@ if ($busqueda) {
 					$fecha=$preguntas[$i]['fecha'];
 
 					$respuesta=$respuesta."<div class='pregunta'>
-						<h4>Concepto: $concepto</h4>
+						<h4><span>Concepto: </span>$concepto</h4>
 						<p>
 							<div>Nombre:</div> $nombre<br>
 							<div>Autor:</div> $autor<br>

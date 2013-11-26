@@ -38,7 +38,8 @@ header h1 a { text-decoration: none; color: #fff; }
 header h1 a:hover { text-decoration: none; color: #fff; border-bottom: 1px dotted #fff; }
 header h2 { font-size: 23px; padding: 5px 0 0 70px; margin: 0; color: #efefef; font-weight: 100; }
 footer{width: 100%; margin: 0 auto;display: block; background-color: #ff8820; text-align: center; height: 50px; line-height: 50px; color:#FFFFFF;}
-
+.separadorh{background-color: #ff8820; height: 2px; width: 100%;}
+.separadorf{background-color: #77c728; height: 2px; width: 100%;}
 /*pagina index*/
 .contenido{background:none repeat scroll 0 0 #FFFFCC;padding: 20px 50px 20px 60px; margin-bottom: 150px;}
 .contenido a{text-decoration: none;color: #2E8711; }
@@ -53,7 +54,7 @@ footer{width: 100%; margin: 0 auto;display: block; background-color: #ff8820; te
 
 .right{width:400px;display: inline;}
 .right img{position:absolute; margin-left: 137px; width: 238px; margin-top: 105px;} 
-.right p{margin-left: 618px; margin-top: -20px; font-size: 18px;}
+.right p{margin-left: 618px; margin-top: -20px; font-size: 18px; color: #2E8711;}
 
 /*pagina ingreso*/
 .contenido h2{color: #121F0C;
@@ -77,6 +78,7 @@ footer{width: 100%; margin: 0 auto;display: block; background-color: #ff8820; te
 .contenido form input[type="button"]{width: 150px; margin-top: 20px;margin-right: 40px;}
 .contenido form input[type="text"]{width: 300px;}
 .contenido form select {width:307px;}
+.contenido label{font-weight: bold;}
 
 /*pagina de búsqueda*/
 .contenido .busqueda h3 {margin-top: 60px;}
@@ -85,11 +87,16 @@ footer{width: 100%; margin: 0 auto;display: block; background-color: #ff8820; te
 .resultados h3{margin-bottom: 80px;}
 .pregunta{margin-bottom: 20px; position: relative;}
 .pregunta .separador{background-color: orange; min-width: 100%; height: 4px; display: block; margin-bottom: 40px; margin-top: 40px;}
+.pregunta div{font-weight: bold;}
+.pregunta span{font-weight: bold; font-size: 18px;}
+.pregunta h4{font-weight: bold; font-size: 18px;}
+.pregunta span[mobi="si"]{color: #2E8711;}
+.pregunta span[mobi="no"]{color: red;}
 
 .resultados div{display: inline; width: 180px;}
 
 .contenido .resultados .descarga{display: block; margin-left: 380px;margin-top: -190px;}
-.descarga div{margin-left: 40px;}
+.descarga div{margin-left: 40px; color: #2E8711;}
 .descarga img {width: 154px;}
 
 /*navegacion*/
