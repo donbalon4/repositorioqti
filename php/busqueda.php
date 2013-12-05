@@ -218,9 +218,12 @@ if ($busqueda) {
 							}
 							
 						}
-		$respuesta = $respuesta.$nav.$nav1.$nav2."<a href='busqueda.html'> <input type = 'button' value='Volver a la búsqueda'></a>";
+		$respuesta = $respuesta.$nav.$nav1.$nav2."<br><a href='busqueda.html'> <input type = 'button' value='Volver a la búsqueda'></a>";
 	}
-	echo $respuesta."<a href='busqueda.html'> <input type = 'button' value='Volver a la búsqueda'></a>";
+	else{
+		$respuesta=$respuesta."<a href='busqueda.html'> <input type = 'button' value='Volver a la búsqueda'></a>";
+	}
+	echo $respuesta;
 	mysqli_free_result($pregunta);
 	mysqli_close($conexion);
 }

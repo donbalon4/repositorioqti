@@ -7,20 +7,22 @@ include_once 'funciones.php';
 
 $autor=mysql_real_escape_string($_REQUEST['autor']);
 $autor=strip_tags($autor);
+$autorv=str_replace(" ", "_", $autor);
 $institucion=mysql_real_escape_string($_REQUEST['institucion']);
 $institucion=strip_tags($institucion);
 $nombre=mysql_real_escape_string($_REQUEST['nombre']);
 $nombre=strip_tags($nombre);
+$nombrev=str_replace(" ", "_", $nombre);
 $nivel=mysql_real_escape_string($_REQUEST['nivel']);
 $nivel=strip_tags($nivel);
+$nivelv=str_replace(" ", "_", $nivel);
 $materia=mysql_real_escape_string($_REQUEST['materia']);
 $materia=strip_tags($materia);
 $curso=mysql_real_escape_string($_REQUEST['curso']);
 $curso=strip_tags($curso);
 $tipo=mysql_real_escape_string($_REQUEST['tipo']);
 $tipo=strip_tags($tipo);
-$herramienta_autor=mysql_real_escape_string($_REQUEST['herramienta_autor']);
-$herramienta_autor=strip_tags($herramienta_autor);
+$tipov=str_replace(" ", "_", $tipo);
 $tags=mysql_real_escape_string($_REQUEST['tags']);
 $tags=strip_tags($tags);
 $tags=strtolower($tags);
@@ -51,18 +53,7 @@ if ($tags == '') {
   echo "<script>alert('Debe ingresar las palabras claves')</script>";
   echo "<SCRIPT>window.location='../subida.html';</SCRIPT>";
 }
-elseif ($nivel == 'basico' or $nivel == 'medio') {
-  if ($materia == ''){
-    $ingreso=false;
-    echo "<script>alert('Debe ingresar una materia')</script>";
-    echo "<SCRIPT>window.location='../subida.html';</SCRIPT>";
-  }
-  if ($curso == ''){
-    $ingreso=false;
-    echo "<script>alert('Debe ingresar un curso')</script>";
-    echo "<SCRIPT>window.location='../subida.html';</SCRIPT>";
-  }
-}
+
 
 //Preguntamos si nuetro 'archivo' fue definido
 if (isset ($_FILES["archivo"]) and $ingreso) {
@@ -80,43 +71,60 @@ if (isset ($_FILES["archivo"]) and $ingreso) {
     }
   }
   if($_FILES['archivo']['type']=='text/xml'){
-   
-    $pregunta= simplexml_load_file($_FILES['archivo']['tmp_name']);
-    $analisis=validarXML($pregunta,$tipo); //invocamos a la funcion que valida las preguntas segun la estructura de aqurate
-    $valido=$analisis['valido'];
-    $mensaje=$analisis['mensaje'];
-    if ($analisis['mobile']) {
-      $compatible_Mobile='si';
-    }
-    else{
-      $compatible_Mobile='no';
-    }
-
-    if ($valido==false) {
-      echo "<script>alert('$analisis[mensaje]')</script>";
+    $verifica_nombre=mysqli_query($conexion,"SELECT id FROM  `pregunta` where ruta = '../preguntas//$autorv/$nivelv/$tipov/$nombrev.xml' ORDER BY id ASC ") or die("Problemas en el select 1:".mysqli_error($conexion));
+    $reg1=mysqli_fetch_array($verifica_nombre,MYSQLI_ASSOC);
+    if (count($reg1) > 0){
+      echo "<script>alert('Ya existe un archivo con esos mismos datos, sugerencia: cambie le nombre de la pregunta')</script>";
       echo "<SCRIPT>window.location='../subida.html';</SCRIPT>";
+      die();
     }
     else{
-      $nombretemporal = $_FILES['archivo']['tmp_name'];
-      $ingresar_Bd=copiarArchivo($nombretemporal,$nombre,$nivel,$autor,$tipo);//invocamos la funcion q crea los directorios y copia el archivo a una caréta del repositorio
+      $pregunta= simplexml_load_file($_FILES['archivo']['tmp_name']);
+      $analisis=validarXML($pregunta,$tipo); //invocamos a la funcion que valida las preguntas segun la estructura de aqurate
+      $valido=$analisis['valido'];
+      $mensaje=$analisis['mensaje'];
+      if ($analisis['mobile']) {
+        $compatible_Mobile='si';
+      }
+      else{
+        $compatible_Mobile='no';
+      }
+
+      if ($valido==false) {
+        echo "<script>alert('$analisis[mensaje]')</script>";
+        echo "<SCRIPT>window.location='../subida.html';</SCRIPT>";
+      }
+      else{
+        $nombretemporal = $_FILES['archivo']['tmp_name'];
+        $ingresar_Bd=copiarArchivo($nombretemporal,$nombre,$nivel,$autor,$tipo);//invocamos la funcion q crea los directorios y copia el archivo a una caréta del repositorio
+      }
     }
   }
   elseif ($_FILES['archivo']['type'] == 'application/zip') {
-    $nombretemporal = $_FILES['archivo']['tmp_name'];
-    $zip=validarZip($nombretemporal,$tipo);
-    if ($zip['mobile']) {
-      $compatible_Mobile='si';
-    }
-    else{
-      $compatible_Mobile='no';
-    }
-
-    if ($zip['valido']) {
-      $ingresar_Bd=copiarArchivoZip($nombretemporal,$nombre,$nivel,$autor,$tipo);
-    }
-    else{
-      echo "<script>alert('$zip[mensaje]')</script>";
+    $verifica_nombre=mysqli_query($conexion,"SELECT id FROM  `pregunta` where ruta_descarga = '../preguntas/$autorv/$nivelv/$tipov/$nombrev.zip' ORDER BY id ASC ") or die("Problemas en el select 1:".mysqli_error($conexion));
+    $reg1=mysqli_fetch_array($verifica_nombre,MYSQLI_ASSOC);
+    if (count($reg1) > 0){
+      echo "<script>alert('Ya existe un archivo con esos mismos datos, sugerencia: cambie el nombre de la pregunta')</script>";
       echo "<SCRIPT>window.location='../subida.html';</SCRIPT>";
+      die();
+    }
+    else{
+      $nombretemporal = $_FILES['archivo']['tmp_name'];
+      $zip=validarZip($nombretemporal,$tipo);
+      if ($zip['mobile']) {
+        $compatible_Mobile='si';
+      }
+      else{
+        $compatible_Mobile='no';
+      }
+
+      if ($zip['valido']) {
+        $ingresar_Bd=copiarArchivoZip($nombretemporal,$nombre,$nivel,$autor,$tipo);
+      }
+      else{
+        echo "<script>alert('$zip[mensaje]')</script>";
+        echo "<SCRIPT>window.location='../subida.html';</SCRIPT>";
+      }
     }
   }
     if ($ingresar_Bd['exito']) {

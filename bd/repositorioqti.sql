@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 25-10-2013 a las 22:46:06
+-- Tiempo de generación: 05-12-2013 a las 01:48:40
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -26,23 +26,23 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `pregunta`
 --
 
+DROP TABLE IF EXISTS `pregunta`;
 CREATE TABLE IF NOT EXISTS `pregunta` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `autor` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `institucion` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `herramienta_autor` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   `compatible_mobile` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
   `nivel_educacion` varchar(8) COLLATE utf8_spanish_ci NOT NULL,
   `materia` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `curso` int(2) DEFAULT NULL,
-  `concepto` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `tipo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `ruta_descarga` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `numero_descargas` int(11) NOT NULL DEFAULT '0',
   `tamano` int(11) NOT NULL,
   `fecha_ingreso` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=83 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=90 ;
 
 -- --------------------------------------------------------
 
@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `pregunta` (
 -- Estructura de tabla para la tabla `relacion_tags`
 --
 
+DROP TABLE IF EXISTS `relacion_tags`;
 CREATE TABLE IF NOT EXISTS `relacion_tags` (
   `fk_id` int(11) NOT NULL,
   `fk_palabra` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
@@ -63,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `relacion_tags` (
 -- Estructura de tabla para la tabla `tag`
 --
 
+DROP TABLE IF EXISTS `tag`;
 CREATE TABLE IF NOT EXISTS `tag` (
   `palabra` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`palabra`)
