@@ -12,9 +12,13 @@
 				if ($('#nivel').val()=='' || $('#nivel').val()=='superior') {
 					$('#materia').attr('disabled', true);
 					$('#curso').attr('disabled', true);
+					$('#curso').empty();
+					$('#materia').empty();$('#materia').append('<option value= "">Selecione una Opción</option>');
+					$('#curso').append('<option value="">Seleccione una Opción</option>');
+
 				}
 
-				else if ($('#nivel').val()=='basico') {
+				else if ($('#nivel').val()=='básico') {
 					$('#materia').empty();
 					$('#materia').append('<option value= "">Selecione una Opción</option>'+
 						'<option value="historia">Historia, Geografía y Ciencias Sociales</option>'+
@@ -89,11 +93,16 @@
 					alert('Debe Ingresar el nombre de la pregunta');
 					c=c+1;
 				}
+
+				if ($('#tipo').val()=='') {
+					alert('Debe ingresar el tipo de pregunta');
+					c=c+1;
+				}
 				if ($('#nivel').val()=='') {
 					alert('Debe ingresar el nivel educacional');
 					c=c+1;
 				}
-				else if ($('#nivel').val() == 'basico' || $('#nivel').val() =='medio' ) {
+				/*else if ($('#nivel').val() == 'basico' || $('#nivel').val() =='medio' ) {
 					if ($('#materia').val()=='') {
 						alert('Debe ingresar la materia');	
 						c=c+1;
@@ -104,9 +113,9 @@
 						c=c+1;
 					}
 					
-				}
-				if ($('#concepto').val()=='') {
-					alert('Debe ingresar un concepto');
+				}*/
+				if ($('#tags').val()=='') {
+					alert('Debe ingresar las palabras claves');
 					c=c+1;
 				}
 				if ($('#archivo').val()=='') {
@@ -116,6 +125,14 @@
 					alert('Su archivo debe ser .xml o .zip');
 					c=c+1;
 
+				}
+				if ($('#tipo').val()== 'hotspot' || $('tipo').val() == 'graphic order'){
+					if ($('#archivo').val().lastIndexOf('.zip') != ($('#archivo').val().length-4)){
+						alert('Al seleccionar una pregunta del tipo hotspot o graphic order, debe subir un archivo zip que contenga el recurso de imagen asociado a la pregunta');
+						c=c+1;
+						$('#archivo').val("");
+					}
+					
 				}
 				if (c==0) {
 					$('#ingresoPregunta').submit();
@@ -137,6 +154,18 @@
 			<label><div>Autor: </div></label> <input type='text' maxlength='40' name='autor' id='autor' autofocus required>* <br>
 			<label><div>Institución: </div></label> <input type='text' name='institucion' maxlength='40' id='institucion'> <br>
 			<label><div>Nombre Pregunta: </div></label> <input type='text' maxlength='40' name='nombre' id='nombre' required>*<br>
+			<label> <div> Tipo de Pregunta: </div></label>
+			<select name='tipo' id='tipo' required>
+				<option value='' selected>Seleccione una Opción</option>
+				<option value='choice'>Choice</option>
+				<option value='order'>Order</option>
+				<option value='associate'>Associate</option>
+				<option value='inline choice'>Inline Choice</option>
+				<option value='hotspot'>Hotspot</option>
+				<option value='graphic order'>Graphic Order</option>
+				<option value='slider'>Slider</option>
+				<option value='otros'>Otro</option>
+			</select>*<br>
 			<label> <div> Nivel de Educación: </div></label>
 			<select name='nivel' id='nivel' required>
 				<option value='' selected>Seleccione una Opción</option>
@@ -153,9 +182,7 @@
 			<select name ='curso' id='curso' disabled>
 				<option value=''>Seleccione una Opción</option>
 			</select><br>
-			<label> <div> Concepto: </div></label><input type='text' name='concepto' id='concepto' required>*<br>
-			<label> <div> Herramienta de Autor: </div></label><input type='text' maxlength='40' name='herramienta_autor' id='herramienta_autor' ><br>
-			<label> <div> Palabras Claves: </div></label><input type='text' name='tags' maxlength='400' id='tags'>(Ej. casa, puerta) <br>
+			<label> <div> Palabras Claves: </div></label><input type='text' name='tags' maxlength='400' id='tags' required>(Ej. casa, puerta) * <br>
 			<label> <div> Cargue el archivo: </div></label><input id='archivo' type='file' accept='text/xml,application/zip' name='archivo' required><br>
 			<input type='button' id='subir' value='Subir'>
 			<input type='button' id='atras' value='Atrás'>
