@@ -121,6 +121,7 @@ function validarTipos($pregunta,$tipo,$ruta='noruta'){
 
       case 'hotspot':
       $imagen=$pregunta->itemBody->hotspotInteraction->object['data'];
+      $imagen=str_replace("\\", "/", "$imagen");
       if(!$pregunta->itemBody->hotspotInteraction){
        $respuesta['mensaje']='No se encuentra el nodo hotspotInteraction para la pregunta tipo hotspot'; 
       }
@@ -140,6 +141,7 @@ function validarTipos($pregunta,$tipo,$ruta='noruta'){
 
       case 'graphic order':
       $imagen=$pregunta->itemBody->graphicOrderInteraction->object['data'];
+      $imagen=str_replace("\\", "/", "$imagen");
       if(!$pregunta->itemBody->graphicOrderInteraction){
        $respuesta['mensaje']='No se encuentra el nodo graphicOrderInteraction para la pregunta tipo graphic order'; 
       }
