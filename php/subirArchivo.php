@@ -71,7 +71,7 @@ if (isset ($_FILES["archivo"]) and $ingreso) {
     }
   }
   if($_FILES['archivo']['type']=='text/xml'){
-    $verifica_nombre=mysqli_query($conexion,"SELECT id FROM  `pregunta` where ruta = '../preguntas//$autorv/$nivelv/$tipov/$nombrev.xml' ORDER BY id ASC ") or die("Problemas en el select 1:".mysqli_error($conexion));
+    $verifica_nombre=mysqli_query($conexion,"SELECT id FROM  `pregunta` where ruta_descarga = '../preguntas//$autorv/$nivelv/$tipov/$nombrev.xml' ORDER BY id ASC ") or die("Problemas en el select 1:".mysqli_error($conexion));
     $reg1=mysqli_fetch_array($verifica_nombre,MYSQLI_ASSOC);
     if (count($reg1) > 0){
       echo "<script>alert('Ya existe un archivo con esos mismos datos, sugerencia: cambie le nombre de la pregunta')</script>";

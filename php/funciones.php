@@ -229,6 +229,12 @@ function validarZip($nombreTemporal,$tipo){
               $respuesta['mensaje']="No se encontro el archivo xml en la carpeta zip";
             }
         }
+        else{
+          $respuesta['mensaje']='error al acceder la carpeta temporal';    
+        }
+      }
+      else{
+        $respuesta['mensaje']='error al crear la carpeta temporal';  
       }
       eliminarDir('temporal');
 
