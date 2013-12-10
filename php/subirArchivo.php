@@ -188,7 +188,7 @@ if (isset ($_FILES["archivo"]) and $ingreso) {
           }
           mysqli_free_result($id_preg);
         }
-      echo "<script>alert('La pregunta ha sido ingresa satisfactoriamente')</script>";
+      echo "<script>alert('La pregunta ha sido ingresada satisfactoriamente')</script>";
       echo "<SCRIPT>window.location='../subida.html';</SCRIPT>";
       mysqli_close($conexion);
     }

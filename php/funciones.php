@@ -8,14 +8,21 @@ function validarXML($pregunta,$tipo,$ruta='noruta'){
   $respuesta['mensaje']='';
   $valida_nodos=validarNodos($pregunta);
   if($valida_nodos['valido']){
-    $valida_tipo=validarTipos($pregunta,$tipo,$ruta);
-    if ($valida_tipo['valido']) {
+    if ($tipo=='otros') {
       $valido=true;
-      $compatible_Mobile=true;
+      $compatible_Mobile=false;
     }
     else{
-      $respuesta['mensaje']=$valida_tipo['mensaje'];
+      $valida_tipo=validarTipos($pregunta,$tipo,$ruta);
+      if ($valida_tipo['valido']) {
+        $valido=true;
+        $compatible_Mobile=true;
+      }
+      else{
+        $respuesta['mensaje']=$valida_tipo['mensaje'];
+      }
     }
+    
   }
   else{
     $respuesta['mensaje']=$valida_nodos['mensaje'];

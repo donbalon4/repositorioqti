@@ -133,7 +133,7 @@ if ($busqueda) {
 								<div>Nivel:</div> $nivel<br>
 								<div>Tipo:</div> $tipo<br>
 								<div>Curso:</div> $curso<br>
-								<div>Compatible_mobile:</div><span mobi='$compatible_mobile'> $compatible_mobile</span><br>
+								<div>Compatible con MobileQTI:</div><span mobi='$compatible_mobile'> $compatible_mobile</span><br>
 								<div>Descargas:</div> $descargas<br>
 								<div>Tamaño:</div> $tamano KB<br>
 								<div>Fecha:</div> $fecha<br>
@@ -183,7 +183,7 @@ if ($busqueda) {
 							<div>Nivel:</div> $nivel<br>
 							<div>Tipo:</div> $tipo<br>
 							<div>Curso:</div> $curso<br>
-							<div>Compatible_mobile:</div><span mobi='$compatible_mobile'> $compatible_mobile</span><br>
+							<div>Compatible con MobileQTI:</div><span mobi='$compatible_mobile'> $compatible_mobile</span><br>
 							<div>Descargas:</div> $descargas<br>
 							<div>Tamaño:</div> $tamano KB<br>
 							<div>Fecha:</div> $fecha<br>

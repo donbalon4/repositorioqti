@@ -45,7 +45,8 @@ footer{width: 100%; margin: 0 auto;display: block; background-color: #ff8820; te
 .contenido a{text-decoration: none;color: #2E8711; }
 .contenido a:visited{color: #2E8711;}
 .contenido a:hover{text-decoration: underline;}
-
+.info{font-weight: bold; color: red;}
+.contenido p{font-weight: bold;}
 
 .left{width:400px;display: inline-block; position: relative;margin-top: 100px;}
 .left img{margin-left: 105px;}
@@ -57,6 +58,7 @@ footer{width: 100%; margin: 0 auto;display: block; background-color: #ff8820; te
 .right p{margin-left: 618px; margin-top: -20px; font-size: 18px; color: #2E8711;}
 
 /*pagina ingreso*/
+
 .contenido h2{color: #121F0C;
     font-size: 22px;
     font-weight: 100;
