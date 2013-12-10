@@ -50,12 +50,12 @@ footer{width: 100%; margin: 0 auto;display: block; background-color: #ff8820; te
 
 .left{width:400px;display: inline-block; position: relative;margin-top: 100px;}
 .left img{margin-left: 105px;}
-.left p{margin-left: 140px; color: #2E8711; font-size: 18px;}
+.left p{margin-left: 140px; color: #2E8711; font-size: 18px; font-weight: normal;}
 
 
 .right{width:400px;display: inline;}
 .right img{position:absolute; margin-left: 137px; width: 238px; margin-top: 105px;} 
-.right p{margin-left: 618px; margin-top: -20px; font-size: 18px; color: #2E8711;}
+.right p{margin-left: 618px; margin-top: -20px; font-size: 18px; color: #2E8711; font-weight: normal;}
 
 /*pagina ingreso*/
 
