@@ -20,13 +20,13 @@ if ($busqueda) {
 		$pregunta=mysqli_query($conexion,"SELECT id, nombre,autor,compatible_mobile,nivel_educacion,tipo,curso,autor,ruta_descarga,numero_descargas,tamano,fecha_ingreso FROM  `pregunta` ORDER BY id ASC ") or die("Problemas en el select 1:".mysqli_error($conexion));
 	}
 	elseif ($tipo=='' and $autor !='' and $tags == '') {
-		$pregunta=mysqli_query($conexion,"SELECT id, nombre,autor,compatible_mobile,nivel_educacion,tipo,curso,autor,ruta_descarga,numero_descargas,tamano,fecha_ingreso FROM pregunta where autor ='$autor' ORDER BY id ASC ") or die("Problemas en el select 2:".mysqli_error($conexion));
+		$pregunta=mysqli_query($conexion,"SELECT id, nombre,autor,compatible_mobile,nivel_educacion,tipo,curso,autor,ruta_descarga,numero_descargas,tamano,fecha_ingreso FROM pregunta where autor LIKE '%$autor%' ORDER BY id ASC ") or die("Problemas en el select 2:".mysqli_error($conexion));
 	}
 	elseif ($tipo !='' and $autor =='' and $tags == '') {
 		$pregunta=mysqli_query($conexion,"SELECT id, nombre,autor,compatible_mobile,nivel_educacion,tipo,curso,autor,ruta_descarga,numero_descargas,tamano,fecha_ingreso FROM pregunta where tipo = '$tipo' ORDER BY id ASC ") or die("Problemas en el select 3:".mysqli_error($conexion));
 	}
 	elseif ($tipo !='' and $autor !='' and $tags == '') {
-		$pregunta=mysqli_query($conexion,"SELECT id, nombre,autor,compatible_mobile,nivel_educacion,tipo,curso,autor,ruta_descarga,numero_descargas,tamano,fecha_ingreso FROM pregunta where autor ='$autor' and tipo = '$tipo' and curso = '$curso' ORDER BY id ASC ") or die("Problemas en el select 4:".mysqli_error($conexion));
+		$pregunta=mysqli_query($conexion,"SELECT id, nombre,autor,compatible_mobile,nivel_educacion,tipo,curso,autor,ruta_descarga,numero_descargas,tamano,fecha_ingreso FROM pregunta where autor LIKE '%$autor%' and tipo = '$tipo' and curso = '$curso' ORDER BY id ASC ") or die("Problemas en el select 4:".mysqli_error($conexion));
 	}
 
 	$preguntas=array();
