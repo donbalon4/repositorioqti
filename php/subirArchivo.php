@@ -5,25 +5,25 @@ Autor: Daniel Ojeda Sandoval
 include_once 'conexion.php';
 include_once 'funciones.php';
 
-$autor=mysql_real_escape_string($_REQUEST['autor']);
+$autor=mysqli_real_escape_string($conexion,$_REQUEST['autor']);
 $autor=strip_tags($autor);
 $autorv=str_replace(" ", "_", $autor);
-$institucion=mysql_real_escape_string($_REQUEST['institucion']);
+$institucion=mysqli_real_escape_string($conexion,$_REQUEST['institucion']);
 $institucion=strip_tags($institucion);
-$nombre=mysql_real_escape_string($_REQUEST['nombre']);
+$nombre=mysqli_real_escape_string($conexion,$_REQUEST['nombre']);
 $nombre=strip_tags($nombre);
 $nombrev=str_replace(" ", "_", $nombre);
-$nivel=mysql_real_escape_string($_REQUEST['nivel']);
+$nivel=mysqli_real_escape_string($conexion,$_REQUEST['nivel']);
 $nivel=strip_tags($nivel);
 $nivelv=str_replace(" ", "_", $nivel);
-$materia=mysql_real_escape_string($_REQUEST['materia']);
+$materia=mysqli_real_escape_string($conexion,$_REQUEST['materia']);
 $materia=strip_tags($materia);
-$curso=mysql_real_escape_string($_REQUEST['curso']);
+$curso=mysqli_real_escape_string($conexion,$_REQUEST['curso']);
 $curso=strip_tags($curso);
-$tipo=mysql_real_escape_string($_REQUEST['tipo']);
+$tipo=mysqli_real_escape_string($conexion,$_REQUEST['tipo']);
 $tipo=strip_tags($tipo);
 $tipov=str_replace(" ", "_", $tipo);
-$tags=mysql_real_escape_string($_REQUEST['tags']);
+$tags=mysqli_real_escape_string($conexion,$_REQUEST['tags']);
 $tags=strip_tags($tags);
 $tags=strtolower($tags);
 //Validaciones

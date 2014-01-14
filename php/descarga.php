@@ -4,9 +4,9 @@ Autor: Daniel Ojeda Sandoval
 */
 include_once 'conexion.php';
 
-$nombre = mysql_real_escape_string($_REQUEST['nombre']);
+$nombre = mysqli_real_escape_string($conexion,$_REQUEST['nombre']);
 $nombre=strip_tags($nombre);
-$enlace = mysql_real_escape_string($_REQUEST['ruta']);
+$enlace = mysqli_real_escape_string($conexion,$_REQUEST['ruta']);
 $enlace=strip_tags($enlace);
 if ($nombre=='' or $enlace=='') {
 	echo "Error :P";
